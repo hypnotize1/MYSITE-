@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from blog.models import post
 
 # Create your views here.
 def blog_view(request):
@@ -7,3 +8,7 @@ def blog_view(request):
 def blog_single(request):
     return render(request, 'blog/blog-single.html')
 
+def test_func(request):
+    posts = post.objects.all()
+    context = {'posts' : posts}
+    return render(request, 'test.html', context)
