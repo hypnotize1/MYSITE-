@@ -11,7 +11,7 @@ class Category(models.Model):
 class post(models.Model):
     title = models.CharField(max_length = 255)
     content = models.TextField()
-    image = models.ImageField(upload_to =  'blog-images/', default = 'blog-images/default.jpg')
+    image = models.ImageField(upload_to = 'blog-images/', default = 'blog-images/default.jpg')
     # tag
     author = models.ForeignKey(User, on_delete = models.SET_NULL, null = True)
     category = models.ManyToManyField(Category, )
