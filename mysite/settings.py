@@ -37,8 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'django.contrib.sites',
+    'django_extensions',
     'website.apps.WebsiteConfig',
-    'blog.apps.BlogConfig'
+    'blog.apps.BlogConfig',
+    'sweetify'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +135,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
