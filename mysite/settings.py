@@ -39,11 +39,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'taggit',
     'django_extensions',
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
-    'sweetify'
+    'sweetify',
+    'robots',
+    'debug_toolbar',
+    'django_summernote',
+
 ]
+
+
+SITE_ID = 2 
+ROBOTS_USE_SITEMAP = False
+ROBOTS_USE_HOST = False
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,6 +64,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -137,3 +150,8 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
