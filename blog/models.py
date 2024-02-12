@@ -1,3 +1,4 @@
+from typing import OrderedDict
 from django.urls import reverse
 from django.db import models
 from django.contrib.auth.models import User
@@ -9,6 +10,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name    
+
 
 class post(models.Model):
     title = models.CharField(max_length = 255)
@@ -34,3 +36,20 @@ class post(models.Model):
     
     
    
+class Comment(models.Model):
+    Post = models.ForeignKey(post, on_delete = models.CASCADE)
+    name = models.CharField(max_length = 255)
+    email = models.EmailField(null=True, blank=True)
+    subject = models.CharField(max_length = 255)
+    message = models.TextField()
+    approved = models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add = True)
+    updated_date = models.DateTimeField(auto_now = True)
+
+
+    class Meta:
+        ordering = ['-created_date']        
+
+
+    def __str__(self):
+        return self.name
