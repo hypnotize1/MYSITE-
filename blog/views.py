@@ -6,11 +6,7 @@ from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from blog.forms import CommentForm
 import sweetify
-
-
-
-
-
+from django.urls import reverse
 
 # Create your views here.
 def blog_view(request,**kwargs):
@@ -32,10 +28,6 @@ def blog_view(request,**kwargs):
 
     context = {'posts' : posts}
     return render(request, 'blog/blog-home.html', context)
-
-
-
-
 
 
 
@@ -68,20 +60,19 @@ def blog_single(request, pid):
     current_post = get_object_or_404(all_posts, pk = pid)
     current_post.counted_views += 1
     current_post.save()
+
+    if not current_post.login_require:
+        comments = Comment.objects.filter(Post = current_post.id, approved = True)
+        context = {'Post': current_post, 'pp': previous_post, 'np': next_post, 'comments': comments, 'form': form}
+        return render(request, 'blog/blog-single.html', context)
     
-    comments = Comment.objects.filter(Post = current_post.id, approved = True)
-    context = {'Post': current_post, 'pp': previous_post, 'np': next_post, 'comments': comments, 'form': form}
-    return render(request, 'blog/blog-single.html', context)
-
-
-
-
-
-
-
-def test(request):
-    return render(request, 'test.html')
-
+    else:
+        if request.user.is_authenticated:
+            comments = Comment.objects.filter(Post = current_post.id, approved = True)
+            context = {'Post': current_post, 'pp': previous_post, 'np': next_post, 'comments': comments, 'form': form}
+            return render(request, 'blog/blog-single.html', context)
+        else:
+            return HttpResponseRedirect(reverse('accounts:login'))
 
 
 
@@ -91,10 +82,6 @@ def blog_category(request, cat_name):
     posts = posts.filter(category__name = cat_name)
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
-
-
-
-
 
 
 

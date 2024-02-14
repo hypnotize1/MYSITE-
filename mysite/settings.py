@@ -202,3 +202,7 @@ SUMMERNOTE_CONFIG = {
         ],
     }
 }
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend', # این خط را نگه دارید تا همچنان بتوانید از backend پیش‌فرض استفاده کنید.
+    'accounts.backends.CustomAuthenticationBackend', # به جای 'your_app_name'، نام اپلیکیشن خود را قرار دهید.
+]
