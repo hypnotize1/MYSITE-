@@ -3,9 +3,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
-import sweetify
 from django.urls import reverse
 from accounts.forms import SignupForm
+import sweetify
+
 
 def login_view(request):
     if not request.user.is_authenticated:
@@ -20,7 +21,7 @@ def login_view(request):
                     sweetify.success(request, 'Login successful!')
                     return redirect('/')
             else:
-                sweetify.error(request, 'username or password is invalid, try again!')
+                sweetify.error(request, 'username or password is invalid, please try again!')
         else:
             form = AuthenticationForm()
             

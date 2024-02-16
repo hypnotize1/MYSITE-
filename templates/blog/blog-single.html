@@ -138,7 +138,7 @@
 					<h4>Leave a Comment</h4>
 					<form method="post" action="{% url 'blog:single' pid=Post.id %}">
 						{% csrf_token %}
-						<input type="hidden" name="post" value={{Post.id}}>
+						<input type="hidden" name="Post" value={{Post.id}}>
 						{% if request.user.is_authenticated %}
 						<input type="hidden" name="name" value={{request.user.username}}>
 						<input type="hidden" name="email" value={{request.user.email}}>

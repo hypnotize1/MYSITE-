@@ -51,14 +51,14 @@ INSTALLED_APPS = [
     'captcha',
     'sweetify',
     'accounts',
-
-
 ]
 
 
 SITE_ID = 2 
+
 ROBOTS_USE_SITEMAP = False
 ROBOTS_USE_HOST = False
+
 MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
 }
@@ -202,7 +202,14 @@ SUMMERNOTE_CONFIG = {
         ],
     }
 }
+
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend', # این خط را نگه دارید تا همچنان بتوانید از backend پیش‌فرض استفاده کنید.
-    'accounts.backends.CustomAuthenticationBackend', # به جای 'your_app_name'، نام اپلیکیشن خود را قرار دهید.
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.CustomAuthenticationBackend',
 ]
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mohammadseyfipc@gmail.com'
+EMAIL_HOST_PASSWORD = 'pffxkusbmsqntchz'
