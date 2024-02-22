@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'captcha',
     'sweetify',
     'accounts',
+    'maintenance_mode',
+
 ]
 
 
@@ -72,6 +74,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    'maintenance_mode.middleware.MaintenanceModeMiddleware',
 
 ]
 
@@ -105,6 +108,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+MAINTENANCE_MODE = True
 
 
 # Password validation
@@ -213,3 +218,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mohammadseyfipc@gmail.com'
 EMAIL_HOST_PASSWORD = 'pffxkusbmsqntchz'
+
+MAINTENANCE_MODE = True  # فعالسازی حالت تعلیق
+MAINTENANCE_MODE_TEMPLATE = "coming_soon.html"
