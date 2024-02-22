@@ -23,10 +23,10 @@ DATABASES = {
 
 # INSTALLED_APPS = []
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hypnotize1.ir', 'www.hypnotize1.ir']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 # Quick-start development settings - unsuitable for production
