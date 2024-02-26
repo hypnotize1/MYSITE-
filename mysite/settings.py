@@ -51,10 +51,12 @@ INSTALLED_APPS = [
     'captcha',
     'sweetify',
     'accounts',
+    'compressor',
+
 ]
 
 
-SITE_ID = 2 
+SITE_ID = 2
 
 ROBOTS_USE_SITEMAP = False
 ROBOTS_USE_HOST = False
@@ -142,10 +144,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
  
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media' 
 
 STATICFILES_DIRS = [
@@ -215,3 +217,12 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mohammadseyfipc@gmail.com'
 EMAIL_HOST_PASSWORD = 'pffxkusbmsqntchz'
 
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
+
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True

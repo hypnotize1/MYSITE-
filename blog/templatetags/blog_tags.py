@@ -1,4 +1,3 @@
-from importlib import simple
 from django import template
 from blog.models import post, Comment
 from blog.models import Category

@@ -5,8 +5,8 @@ from blog.models import post, Comment
 from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from blog.forms import CommentForm
-import sweetify
 from django.urls import reverse
+import sweetify
 
 # Create your views here.
 def blog_view(request,**kwargs):
