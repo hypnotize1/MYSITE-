@@ -35,6 +35,7 @@ def postcategory():
       cats = Category.objects.all()
       for name in cats:
            cat_dt[name] = posts.filter(category = name).count()
+      return {'categories' : cat_dt}
 
 @register.simple_tag
 def comments_count(pid):
