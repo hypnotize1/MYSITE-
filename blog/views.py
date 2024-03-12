@@ -19,10 +19,10 @@ def blog_view(request,**kwargs):
     if kwargs.get('tag_name') != None:
         posts = posts.filter(tags__name__in = [kwargs['tag_name']])
     paginator = Paginator(posts, 3)
-    page = request.GET.get('page')
+    page_number = request.GET.get('page')
 
     try:
-        posts = paginator.page(page)
+        posts = paginator.page(page_number)
     except (PageNotAnInteger, EmptyPage):
         posts = paginator.page(1)        
 
